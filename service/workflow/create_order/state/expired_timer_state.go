@@ -21,5 +21,5 @@ func (ths *expiredTimerState) Start(ctx iwf.WorkflowContext, input iwf.Object, p
 }
 
 func (ths *expiredTimerState) Decide(ctx iwf.WorkflowContext, input iwf.Object, commandResults iwf.CommandResults, persistence iwf.Persistence, communication iwf.Communication) (*iwf.StateDecision, error) {
-	return iwf.SingleNextState(&setOrderToExpired{}, nil), nil
+	return iwf.SingleNextState(&setOrderToCancelled{}, nil), nil
 }

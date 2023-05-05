@@ -28,8 +28,8 @@ func (b signalOrderPPKState) Decide(ctx iwf.WorkflowContext, input iwf.Object, c
 		var status string
 		signal.SignalValue.Get(&status)
 		switch status {
-		case string(model.CANCELLED):
-			return iwf.SingleNextState(&setOrderToCancelled{}, nil), nil
+		case string(model.REJECTED):
+			return iwf.SingleNextState(&setOrderToRejected{}, nil), nil
 		case string(model.COMPLETED):
 			return iwf.SingleNextState(&setOrderToCompleted{}, nil), nil
 		}
